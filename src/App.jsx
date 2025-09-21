@@ -24,13 +24,29 @@ function App() {
 
   return (
     <>
-      <label>
-        Your City:
-        <input type="search" onChange={(e) => setLocation(e.target.value)} />
-      </label>
-      <button onClick={handleClick}>Search</button>
-      Temperature: {Object.hasOwn(forecast, "main") && forecast.main.temp}
-      Feels like: {Object.hasOwn(forecast, "main") && forecast.main.feels_like}
+      <header>
+        <form>
+          <search>
+            <label>
+              Your City:
+              <input
+                type="search"
+                onChange={(e) => setLocation(e.target.value)}
+              />
+            </label>
+            <button onClick={handleClick}>Search</button>
+          </search>
+        </form>
+      </header>
+      <main>
+        Temperature: {Object.hasOwn(forecast, "main") && forecast.main.temp}
+        Feels like:{" "}
+        {Object.hasOwn(forecast, "main") && forecast.main.feels_like}
+      </main>
+      <footer>
+        My Github{" "}
+        <a href="https://github.com/igor-bakhtin-gh">@igor-bakhtin-gh</a>
+      </footer>
     </>
   );
 }
