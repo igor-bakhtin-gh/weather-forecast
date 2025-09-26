@@ -7,6 +7,7 @@ const BASE_URL = "https://api.openweathermap.org/data/2.5";
 function App() {
   const [location, setLocation] = useState("");
   const [weather, setWeather] = useState({});
+  const [forecast, setForecast] = useState({});
 
   async function handleClick() {
     const geoApiUrl = `${BASE_GEO_URL}q=${location}&limit=1&appid=${API_KEY}`;
@@ -20,6 +21,13 @@ function App() {
     fetch(weatherApiUrl)
       .then((response) => response.json())
       .then((data) => setWeather(data));
+    const forecastApiUrl = `${BASE_URL}/forecast?lon=${geo.lon}&lat=${geo.lat}&appid=${API_KEY}&units=metric`;
+    fetch(forecastApiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        setForecast(data);
+        console.log(data);
+      });
   }
 
   return (
