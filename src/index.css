@@ -14,3 +14,40 @@ body,
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
+
+.search {
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  display: grid;
+  justify-content: center;
+}
+.weather {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  text-align: center;
+}
+.weather__addons {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.forecast__menu {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+.forecast__list {
+  list-style-type: none;
+  display: flex;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
