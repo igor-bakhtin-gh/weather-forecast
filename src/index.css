@@ -24,14 +24,14 @@ body,
   display: grid;
   justify-content: center;
 }
-.weather {
+.weather-now {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 
   text-align: center;
 }
-.weather__addons {
+.weather-now__addons {
   list-style-type: none;
   display: flex;
   justify-content: space-between;
