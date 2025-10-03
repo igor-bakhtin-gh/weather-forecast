@@ -1,7 +1,9 @@
+import styles from "./Forecast.module.css";
+
 export default function Forecast() {
   return (
     <article className="forecast">
-      <ol className="forecast__menu">
+      <ol className={styles.menu}>
         <li>
           <button>Today</button>
         </li>
@@ -12,7 +14,7 @@ export default function Forecast() {
           <button>5 days</button>
         </li>
       </ol>
-      <ol className="forecast__list">
+      <ol className={styles.list}>
         <li>
           <article className="forecast__list-item">
             <header>Date</header>

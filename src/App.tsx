@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Search from "./Search";
-import Forecast from "./Forecast";
-import WeatherNow from "./WeatherNow";
+import Search from "./components/Search/Search";
+import Forecast from "./components/Forecast/Forecast";
+import WeatherNow from "./components/WeatherNow/WeatherNow";
 
 const API_KEY = "1f09ba2c556c95cc7afadcd2b05fe003";
 const BASE_GEO_URL = "http://api.openweathermap.org/geo/1.0/direct?";

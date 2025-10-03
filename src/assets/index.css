@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+#root {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.main {
+  display: grid;
+  justify-content: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}

@@ -1,10 +1,12 @@
+import style from "./Search.module.css";
+
 interface SearchProps {
   handleSubmit: (formData: FormData) => void;
 }
 
 export default function Search({ handleSubmit }: SearchProps) {
   return (
-    <header className="search">
+    <header className={style.search}>
       <search role="search">
         <form action={handleSubmit}>
           <input type="search" name="query" />

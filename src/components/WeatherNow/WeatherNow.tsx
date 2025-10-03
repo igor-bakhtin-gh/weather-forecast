@@ -1,3 +1,5 @@
+import styles from "./WeatherNow.module.css";
+
 interface WeatherNowProps {
   temperature: number;
   feelsLike: number;
@@ -14,12 +16,12 @@ export default function WeatherNow({
   humidity,
 }: WeatherNowProps) {
   return (
-    <article className="weather-now">
+    <article className={styles.weather}>
       <header>Date</header>
       <p>Temperature: {temperature}</p>
       <p>Feels like: {feelsLike}</p>
-      <footer className="weather-now__footer">
-        <ul className="weather-now__addons">
+      <footer className={styles.footer}>
+        <ul className={styles.addons}>
           <li>Wind {wind} </li>
           <li>Pressure {pressure} </li>
           <li>Humidity {humidity}</li>
