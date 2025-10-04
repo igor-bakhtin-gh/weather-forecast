@@ -17,14 +17,19 @@ interface Main {
 interface Wind {
   speed: number;
 }
-interface Weather {
+export interface Weather {
   main: Main;
   wind: Wind;
+  dt: number;
+  dt_txt: string;
+}
+export interface Forecast {
+  list: Weather[];
 }
 
 function App() {
   const [weather, setWeather] = useState<Weather>();
-  const [forecast, setForecast] = useState({});
+  const [forecast, setForecast] = useState<Forecast>();
 
   async function handleSubmit(formData: FormData) {
     const location = formData.get("query");
@@ -46,22 +51,17 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setForecast(data);
+        console.log(data);
       });
   }
 
   return (
     <>
       <Search handleSubmit={handleSubmit} />
-      {weather && (
+      {weather && forecast && (
         <main className="main">
-          <WeatherNow
-            temperature={weather.main.temp}
-            feelsLike={weather.main.feels_like}
-            wind={weather.wind.speed}
-            pressure={Math.round(weather.main.pressure / 1.333)}
-            humidity={weather.main.humidity}
-          />
-          <Forecast />
+          <WeatherNow weather={weather} />
+          <Forecast forecast={forecast} />
         </main>
       )}
       <footer className="footer">
