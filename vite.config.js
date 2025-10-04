@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   css: {
     modules: {
-      generateScopedName: "[name]__[local]--[hash:base64:5]",
+      generateScopedName: "[folder]__[local]--[hash:base64:5]",
       localsConvention: "camelCaseOnly",
     },
   },

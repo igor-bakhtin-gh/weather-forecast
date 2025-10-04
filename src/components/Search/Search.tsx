@@ -1,7 +1,20 @@
+import { useFormStatus } from "react-dom";
 import style from "./Search.module.css";
 
 interface SearchProps {
   handleSubmit: (formData: FormData) => void;
+}
+
+function Submit() {
+  const { pending } = useFormStatus();
+  return (
+    <>
+      <input type="search" name="query" disabled={pending} />
+      <button type="submit" disabled={pending}>
+        Search
+      </button>
+    </>
+  );
 }
 
 export default function Search({ handleSubmit }: SearchProps) {
@@ -9,8 +22,7 @@ export default function Search({ handleSubmit }: SearchProps) {
     <header className={style.search}>
       <search role="search">
         <form action={handleSubmit}>
-          <input type="search" name="query" />
-          <button type="submit">Search</button>
+          <Submit />
         </form>
       </search>
     </header>
