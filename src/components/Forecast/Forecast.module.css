@@ -1,0 +1,9 @@
+.menu {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+.list {
+  list-style-type: none;
+  display: flex;
+}

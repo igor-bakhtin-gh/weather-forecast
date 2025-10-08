@@ -14,3 +14,13 @@ body,
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
+
+.main {
+  display: grid;
+  justify-content: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
