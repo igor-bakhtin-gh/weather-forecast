@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Forecast } from "../../App";
+import type { Forecast, ForecastItem } from "../../App";
 import styles from "./Forecast.module.css";
 
 interface ForecastProps {
@@ -9,6 +9,42 @@ interface ForecastProps {
 interface ListProps {
   period: string;
   forecast: Forecast;
+}
+
+interface ItemProps {
+  item: ForecastItem;
+  period: string;
+}
+
+function Item({ item, period }: ItemProps) {
+  const date = new Date(item.dt_txt);
+  let format = (
+    <>
+      <p>{date.toLocaleDateString("ru-RU", { weekday: "short" })}</p>
+      <p>
+        {date.toLocaleDateString("ru-RU", {
+          month: "long",
+          day: "numeric",
+        })}
+      </p>
+    </>
+  );
+  if (period !== "fiveDays") {
+    format = (
+      <p>
+        {date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+      </p>
+    );
+  }
+  return (
+    <li>
+      <article className="forecast__list-item">
+        <header>{format}</header>
+        <p>{item.main.temp} °C</p>
+        <footer>{item.wind.speed}</footer>
+      </article>
+    </li>
+  );
 }
 
 function List({ period, forecast }: ListProps) {
@@ -30,35 +66,9 @@ function List({ period, forecast }: ListProps) {
     }
   });
   const listItems = filteredForecast.map((item) => {
-    const date = new Date(item.dt_txt);
-    let format = (
-      <>
-        <p>{date.toLocaleDateString("ru-RU", { weekday: "short" })}</p>
-        <p>
-          {date.toLocaleDateString("ru-RU", {
-            month: "long",
-            day: "numeric",
-          })}
-        </p>
-      </>
-    );
-    if (period !== "fiveDays") {
-      format = (
-        <p>
-          {date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-        </p>
-      );
-    }
-    return (
-      <li key={item.dt}>
-        <article className="forecast__list-item">
-          <header>{format}</header>
-          <p>{item.main.temp} °C</p>
-          <footer>{item.wind.speed}</footer>
-        </article>
-      </li>
-    );
+    return <Item key={item.dt} item={item} period={period} />;
   });
+
   return <ol className={styles.list}>{listItems}</ol>;
 }
 

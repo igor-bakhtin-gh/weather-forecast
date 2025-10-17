@@ -17,14 +17,21 @@ interface Main {
 interface Wind {
   speed: number;
 }
+
 export interface Weather {
+  main: Main;
+  wind: Wind;
+  dt: number;
+}
+
+export interface ForecastItem {
   main: Main;
   wind: Wind;
   dt: number;
   dt_txt: string;
 }
 export interface Forecast {
-  list: Weather[];
+  list: ForecastItem[];
 }
 
 function App() {

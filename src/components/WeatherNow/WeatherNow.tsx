@@ -6,11 +6,22 @@ interface WeatherNowProps {
 }
 
 export default function WeatherNow({ weather }: WeatherNowProps) {
+  console.log(weather.dt + "1000");
+  const date = new Date(Number(weather.dt + "000"));
+
   return (
     <article className={styles.weather}>
-      <header>Date</header>
-      <p>Temperature: {weather.main.temp}</p>
-      <p>Feels like: {weather.main.feels_like}</p>
+      <header>
+        <p>{date.toLocaleDateString("ru-RU", { weekday: "short" })}</p>
+        <p>
+          {date.toLocaleDateString("ru-RU", {
+            month: "long",
+            day: "numeric",
+          })}
+        </p>
+      </header>
+      <p>{weather.main.temp} °C</p>
+      <p>Feels like: {weather.main.feels_like}°C</p>
       <footer className={styles.footer}>
         <ul className={styles.addons}>
           <li>Wind {weather.wind.speed} </li>

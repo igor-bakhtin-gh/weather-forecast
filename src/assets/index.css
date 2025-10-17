@@ -10,14 +10,25 @@ body,
   height: 100%;
 }
 
+html {
+  font-family: Roboto, Geneva, Arial, Helvetica, sans-serif;
+}
+
+textarea,
+input,
+select,
+option,
+button {
+  font-family: inherit;
+}
+
 #root {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 2fr auto;
 }
 
 .main {
   display: grid;
-  justify-content: center;
 }
 
 .footer {
